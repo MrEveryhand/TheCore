@@ -1,0 +1,1 @@
+image_speed = speed / 0.5;

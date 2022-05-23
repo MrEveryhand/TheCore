@@ -1,0 +1,10 @@
+source = "";
+_type = "";
+mass = 0;
+flash = 0;
+collide_object = false;
+_incorporeal = false;
+_invincible = true;
+current_vertical_speed = 0;
+current_horizontal_speed = 0;
+event_user(0);
