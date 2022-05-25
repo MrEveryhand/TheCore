@@ -3,17 +3,23 @@ function Sequence(s, _repeat) constructor
 	_s = s;
 	__repeat = _repeat;
 	counter = 0;
+	state = "start";
 	
 	Evaluate = function ()
 	{
-		if(!!is_array( _s))
+		if(!is_array( _s)) {return}
+		if(state == "stop") {return}
+		
+		if(counter < array_length(_s)) 
 		{
-			if(counter < array_length(_s)) 
-			{
-				if(!!_s[counter].Evaluate())
-					counter++;
-			}
-			else if(!!__repeat) {counter = 0;}
+			state = "play";
+			if(!!_s[counter].Evaluate())
+				counter++;
+		}
+		else 
+		{
+			state = "end";
+			if(!!__repeat) counter = 0;
 		}
 	}
 }

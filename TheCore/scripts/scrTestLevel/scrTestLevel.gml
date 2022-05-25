@@ -6,739 +6,735 @@ var level =
 		[
 			//Random vertical spinners
 			{
-				wave : function()
+				Unpack : function(){Spawner(self);},				
+				wave :
 				{
-					var _path = path_duplicate(pStraight);
-					path_shift(_path, irandom_range(20, 170), 0);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop);
-					
-					show_debug_message(_message);
-				},
-				quantity : 8,
-				interval : 30,
-				_message : "Random vertical spinners",
-				number_of_enemies : 8,
-				path_length : 380,
-			},
-			// Right U-shape spinners
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pBoomerang);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						"top");
-					
-					show_debug_message(_message);
-				},
-				quantity : 5,
-				interval : 15,
-				_message : "Right U-shape spinners",
-				number_of_enemies : 5,
-				path_length : 350,
-			},
-			// Left U-shape spinners
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pBoomerang);
-					path_mirror(_path);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						"top");
-					
-					show_debug_message(_message);
-				},
-				quantity : 5,
-				interval : 15,
-				_message : "Left U-shape spinners",
-				number_of_enemies : 5,
-				path_length : 350,
-			},	
-			// Left S-shape spinners
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pSShape);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop);
-					
-					show_debug_message(_message);
-				},
-				quantity : 5,
-				interval : 15,
-				_message : "Left S-shape spinners",
-				number_of_enemies : 5,
-				path_length : 290,
-			},	
-			// Right S-shape spinners
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pSShape);
-					path_mirror(_path);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop);
-					
-					show_debug_message(_message);
-				},
-				quantity : 5,
-				interval : 15,
-				_message : "Left S-shape spinners",
-				number_of_enemies : 5,
-				path_length : 290,
-			},
-			// Random vertical hitnrun
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pStraight);
-					var _x = irandom_range(5, 15) * 10;
-					if(_x > 100) path_mirror(_path);
-					path_shift(_path, _x, 0);
-					Spawner(
-						oMediumBasicEnemy, 
-						_path, 
-						3, 
-						1, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop);
-					
-					show_debug_message(_message);
-				},
-				quantity : 3,
-				interval : 60,
-				_message : "Random vertical hitnrun",
-				number_of_enemies : 3,
-				path_length : 320,
-			},
-			// Random tight-UShape hitnrun
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pBoomerangTight);
-					var _x = irandom_range(5, 15) * 10;
-					path_shift(_path, _x, 0);
-					Spawner(
-						oMediumBasicEnemy, 
-						_path, 
-						3, 
-						1, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						"top");
-					
-					show_debug_message(_message);
-				},
-				quantity : 3,
-				interval : 60,
-				_message : "Random tight-UShape hitnrun",
-				number_of_enemies : 3,
-				path_length : 400,
-			},
-			//Random vertical\tight-UShape hitnrun
-			{
-				wave : function()
-				{
-					var d2 = irandom(1);
-					var _path = d2 > 0 ? path_duplicate(pBoomerangTight)
-					: path_duplicate(pStraight);
-					var oob = d2 > 0 ? "top" : "bottom";
-		
-					var _x = irandom_range(5, 15) * 10;
-					if(d2 > 0) if(_x > 100) path_mirror(_path);
-					path_shift(_path, _x, 0);
-					Spawner(
-						oMediumBasicEnemy, 
-						_path, 
-						3, 
-						1.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						oob);
-					
-					show_debug_message(_message);
-				},
-				quantity : 6,
-				interval : 60,
-				_message : "Random vertical/tight-UShape hitnrun",
-				number_of_enemies : 6,
-				path_length : 450,
-			},
-			//Both sides tight U-spahe hitnrun
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pBoomerangTight);
-					path_shift(_path, 220, 0);
-					Spawner(
-						oMediumBasicEnemy, 
-						_path, 
-						3, 
-						1, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						"top")
-					
-					
-					_path = path_duplicate(pBoomerangTight);
-					path_shift(_path, 60, 0);
-					path_mirror(_path);
-					Spawner(
-						oMediumBasicEnemy, 
-						_path, 
-						3, 
-						1, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						"top");
-					
-					show_debug_message(_message);
-				},
-				quantity : 3,
-				interval : 120,
-				_message : "Both sides vertical hitnrun",
-				number_of_enemies : 6,
-				path_length : 400,
-			},
-			// Three vertical bigbois
-			{
-				wave : function()
-				{
-					if(!!instance_exists(oCamera))
-					{
-						var camera = GetCamera(oCamera);
-						var _x = (irandom(2) + 2) * 40;
-						var counter = -1;
-						repeat(3)
-						{
-							with(instance_create_layer(
-								camera._xx + _x + (30 * counter),
-								camera._yy + -30,
-								"Instances",
-								oBigBasicEnemy))
-							{
-								_direction = 0
-								mass = 12;
-								top_speed = 0.5;
-								_acceleration = 0.2;
-								_speed = 1;
-								_ease_in = 0.05;
-							}
-							
-							counter++;
+					enemies : 
+						{			
+							title : oSmallBasicEnemy,
+							mass : 1,
+							top_speed : 1.5,
+							acceleration : 0.2,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "bottom",
 						}
-						show_debug_message(_message);
+					,
+					amount : 6,
+					intervals : 40,
+					patterns : pStraight,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, wave.patterns);				
+							path_shift(info.___path, 10 + (irandom_range(1,40) * 6), -20);
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
 					}
 				},
-				quantity : 1,
-				interval : 0,
-				_message : "Three vertical bigbois",
-				number_of_enemies : 3,
-				path_length : 520,
+				wave_length : 600,
+				wave_count : 6,
+				_delete_chance : Chances([[2,0],[8,1]]),
+				_message : "Random vertical smallies",			
 			},
-			//Random vertical diamonds
+			//Vertical spinners
 			{
-				wave : function()
+				Unpack : function(){Spawner(self);},
+				wave :
 				{
-					if(!!instance_exists(oCamera))
-					{
-						var camera = GetCamera(oCamera);
-						with(instance_create_layer(
-							camera._xx,
-							camera._yy,
-							"Instances",
-							oSimpleSpawner
-						)){
-							speed = irandom_range(0,1) * 0.5; 
-							direction = 270;
-							spawn_sequence = new Sequence([
-								new Timer(irandom_range(2,4) * 30),
-								new Event(function()
-								{
-									if(!!instance_exists(oCamera))
-									{
-										var camera = GetCamera(oCamera);
-										instance_create_layer(
-											camera._xx + 50 + (irandom_range(0, 3) + 1) * 25,
-											camera._yy + -5,
-											"Instances",
-											oDiamond)
-									}
-								}, 1, 0)
-							], true)
+					enemies : 
+						{			
+							title : oSmallBasicEnemy,
+							mass : 1,
+							top_speed : 1.5,
+							acceleration : 0.2,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "bottom",
 						}
-					};
-					show_debug_message(_message);
+					,
+					amount : 6,
+					intervals : 10,
+					patterns : pStraight,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						var _path = path_duplicate(wave.patterns);
+						path_shift(_path, 10 + (irandom_range(1,40) * 6), 0);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, _path);				
+
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
+					}
 				},
-				quantity : 1,
-				interval : 0,
-				_message : "Random vertical diamonds",
-				number_of_enemies : 0,
-				path_length : 0,
+				wave_length : 600,
+				wave_count : 6,
+				_delete_chance : Chances([[4,0],[6,1]]),
+				_message : "Vertical smallies",	
+			},
+			//U-turn spinners
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				{
+					enemies : 
+						{			
+							title : oSmallBasicEnemy,
+							mass : 1,
+							top_speed : 1.5,
+							acceleration : 0.2,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "top",
+						}
+					,
+					amount : 6,
+					intervals : 10,
+					patterns : pUTurn,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						var _path = path_duplicate(wave.patterns);
+						if(irandom(1) > 0) path_mirror(_path);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, _path);				
+
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
+					}
+				},
+				wave_length : 600,
+				wave_count : 6,
+				_delete_chance : Chances([[5,0],[5,1]]),
+				_message : "U-Turn smallies",	
+			},
+			//Zigzag spinners
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				{
+					enemies : 
+						{			
+							title : oSmallBasicEnemy,
+							mass : 1,
+							top_speed : 1.5,
+							acceleration : 1,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "bottom",
+						}
+					,
+					amount : 12,
+					intervals : 10,
+					patterns : pZigZag,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						var _path = path_duplicate(wave.patterns);
+						if(irandom(1) > 0) path_mirror(_path);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, _path);				
+
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
+					}
+				},
+				wave_length : 840,
+				wave_count : 12,
+				_delete_chance : Chances([[5,0],[5,1]]),
+				_message : "Zigzag spinners",	
+			},
+			//U-turn spinners
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				{
+					enemies : 
+						{			
+							title : oSmallBasicEnemy,
+							mass : 1,
+							top_speed : 1.5,
+							acceleration : 0.2,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "bottom",
+						}
+					,
+					amount : 6,
+					intervals : 10,
+					patterns : pSTurn,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						var _path = path_duplicate(wave.patterns);
+						if(irandom(1) > 0) path_mirror(_path);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, _path);				
+
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
+					}
+				},
+				wave_length : 600,
+				wave_count : 6,
+				_delete_chance : Chances([[5,0],[5,1]]),
+				_message : "S-Turn smallies",		
+			},
+			//Random vertical mediums
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				{
+					enemies : 
+						{			
+							title : oMediumBasicEnemy,
+							mass : 3,
+							top_speed : 1,
+							acceleration : 0.15,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "bottom",
+						}
+					,
+					amount : 4,
+					intervals : 60,
+					patterns : pStraight,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, wave.patterns);				
+							path_shift(info.___path, 10 + (irandom_range(1,40) * 6), -20);
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
+					}
+				},
+				wave_length : 600,
+				wave_count : 4,
+				_delete_chance : Chances([[2,0],[8,1]]),
+				_message : "Random vertical mediums",			
+			},
+			//Random tight U-turn mediums
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				{
+					enemies : 
+						{			
+							title : oMediumBasicEnemy,
+							mass : 3,
+							top_speed : 1,
+							acceleration : 0.15,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "top",
+						}
+					,
+					amount : 4,
+					intervals : 60,
+					patterns : pUTurnTight,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies, wave.patterns);				
+							path_shift(info.___path, 20 + (irandom_range(1,38) * 6), -20);
+							if(path_get_point_x(info.___path, 0) < 100) path_mirror(info.___path);
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						}
+					}
+				},
+				wave_length : 600,
+				wave_count : 4,
+				_delete_chance : Chances([[4,0],[6,1]]),
+				_message : "Random tight U-turn mediums",			
+			},
+			//Pair of bigbois
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				{
+					enemies : 
+						{			
+							title : oBigBasicEnemy,
+							mass : 12,
+							top_speed : 0.5,
+							acceleration : 0.05,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : true,
+							absolute : true,
+							end_action : path_action_stop,
+							oob : "bottom",
+						}
+					,
+					amount : 2,
+					intervals : 120,
+					patterns : pStraight,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						function Info (_enemy, __path) constructor
+						{
+							enemy = _enemy;
+							___path = path_duplicate(__path);
+							_event = function()
+							{
+								EnemyInit(enemy, ___path);
+							}
+						};
+
+						var info = new Info (wave.enemies, wave.patterns);				
+						path_shift(info.___path, 190, -20);
+						array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+						array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+						
+						var info = new Info (wave.enemies, wave.patterns);				
+						path_shift(info.___path, 40, -20);
+						array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+
+					}
+				},
+				wave_length : 600,
+				wave_count : 2,
+				_delete_chance : Chances([[2,0],[8,1]]),
+				_message : "Pair of bigbois",			
+			},
+			//Random turrets
+			{
+				Unpack : function(){Spawner(self);},				
+				wave :
+				{
+					enemies : 
+						{			
+							title : oTurretBasicEnemy,
+							mass : 10000,
+							top_speed : 0,
+							acceleration : 0,
+							_speed : 0,
+							ease_in : 0.05,
+							ancor : false,
+							absolute : false,
+							end_action : path_action_stop,
+							oob : "bottom",
+						}
+					,
+					amount : 10,
+					intervals : 120,
+					patterns : false,
+					cyclic : false,
+					Generate : function(wave)
+					{
+						var spawner = SpawnerInit(wave, oCamera);
+						function Info (_enemy) constructor
+						{
+							enemy = _enemy;
+							_event = function()
+							{
+								EnemyInit(enemy, [10 + (irandom_range(1,44) * 6), -20]);
+							}
+						};
+						for(var o = 0; o < wave.amount; o++)
+						{
+							var info = new Info (wave.enemies);				
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+							array_push(spawner.spawn_sequence._s, new Event(function()
+							{
+								var camera = GetCamera(oCamera);
+								with(instance_create_layer(
+									camera._xx + 122, 
+									camera._yy -20, 
+									"Obstacles_1", 
+									oBridge))
+									{if (irandom(1) > 0) image_angle = 180}
+							}
+							,1,0));
+							array_push(spawner.spawn_sequence._s, 
+								new Timer(wave.intervals + (irandom_range(-1, 1) * 20)));
+						}
+					}
+				},
+				wave_length : 1200,
+				wave_count : 10,
+				_delete_chance : Chances([[4,0],[6,1]]),
+				_message : "Random turrets",			
+			},
+			//Arrow formation bigbois and smallies
+			{
+				Unpack : function(){Spawner(self);},
+				wave :
+				[
+					{
+						enemies : 
+							{			
+								title : oBigBasicEnemy,
+								mass : 12,
+								top_speed : 0.5,
+								acceleration : 0.1,
+								_speed : 0,
+								ease_in : 0.05,
+								ancor : true,
+								absolute : true,
+								end_action : path_action_stop,
+								oob : "bottom",
+							}
+						,
+						amount : 1,
+						intervals : 0,
+						patterns : pStraight,
+						cyclic : false,
+						Generate : function(wave)
+						{
+							var spawner = SpawnerInit(wave, oCamera);
+							function Info (_enemy, __path) constructor
+							{
+								enemy = _enemy;
+								___path = path_duplicate(__path);
+								_event = function()
+								{
+									EnemyInit(enemy, ___path);
+								}
+							};
+
+							var info = new Info (wave.enemies, wave.patterns);				
+							path_shift(info.___path, 121, -20);
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+
+						}
+					},
+					{
+						Unpack : function(){Spawner(self);},
+						enemies : 
+							{			
+								title : oSmallBasicEnemy,
+								mass : 1,
+								top_speed : 0.5,
+								acceleration : 0.5,
+								_speed : 0,
+								ease_in : 0.05,
+								ancor : true,
+								absolute : true,
+								end_action : path_action_stop,
+								oob : "bottom",
+							}
+						,
+						amount : 3,
+						intervals : 20,
+						patterns : pStraight,
+						cyclic : false,
+						Generate : function(wave)
+						{
+							var spawner = SpawnerInit(wave, oCamera);
+							function Info (_enemy, __path) constructor
+							{
+								enemy = _enemy;
+								___path = path_duplicate(__path);
+								_event = function()
+								{
+									EnemyInit(enemy, ___path);
+								}
+							};
+							for(var o = 0; o < wave.amount; o++)
+							{
+								var info = new Info (wave.enemies, wave.patterns);				
+								path_shift(info.___path, 111 - (o * 20), -20);
+								if(path_get_point_x(info.___path, 0) < 100) path_mirror(info.___path);
+								array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+								array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+							}
+						}
+					},
+					{
+						Unpack : function(){Spawner(self);},
+						enemies : 
+							{			
+								title : oSmallBasicEnemy,
+								mass : 1,
+								top_speed : 0.5,
+								acceleration : 0.5,
+								_speed : 0,
+								ease_in : 0.05,
+								ancor : true,
+								absolute : true,
+								end_action : path_action_stop,
+								oob : "bottom",
+							}
+						,
+						amount : 3,
+						intervals : 20,
+						patterns : pStraight,
+						cyclic : false,
+						Generate : function(wave)
+						{
+							var spawner = SpawnerInit(wave, oCamera);
+							function Info (_enemy, __path) constructor
+							{
+								enemy = _enemy;
+								___path = path_duplicate(__path);
+								_event = function()
+								{
+									EnemyInit(enemy, ___path);
+								}
+							};
+							for(var o = 0; o < wave.amount; o++)
+							{
+								info = new Info (wave.enemies, wave.patterns);				
+								path_shift(info.___path, 131 + (o * 20), -20);
+								if(path_get_point_x(info.___path, 0) < 100) path_mirror(info.___path);
+								array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+								array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+							}
+						}
+					},
+				],
+				wave_length : 600,
+				wave_count : 7,
+				_delete_chance : Chances([[2,0],[8,1]]),
+				_message : "Arrow formation bigbois and smallies",			
 			},
 		],
-		//1
+		// 1
 		[
-			//Left zigzag spinners
+			//Sample wave
 			{
-				wave : function()
-				{
-					var _path = path_duplicate(pZigZag);
-					path_shift(_path, 30, -20);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.5, 
-						1, 
-						0.05,
-						true,
-						path_action_stop);
-					
-					show_debug_message(_message);
-				},
-				quantity : 8,
-				interval : 15,
-				_message : "Left zigzag spinners",
-				number_of_enemies : 8,
-				path_length : 720,
-			},
-			// Right zigzag spinners
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pZigZag);
-					path_mirror(_path);
-					path_shift(_path, 30, -20);
-					Spawner(
-						oSmallBasicEnemy, 
-						_path, 
-						1, 
-						1.5, 
-						0.5, 
-						1, 
-						0.05,
-						true,
-						path_action_stop);
-					
-					show_debug_message(_message);
-				},
-				quantity : 8,
-				interval : 15,
-				_message : "Right zigzag spinners",
-				number_of_enemies : 8,
-				path_length : 720,
-			},
-			// Stalagmits left-right and spinners
-			{
-				wave : function()
-				{
-					if(!!instance_exists(oCamera))
+				Unpack : function(){Spawner(self);},
+				wave :
+				[
 					{
-						var camera = GetCamera(oCamera);
-						for(var i = 0; i < 3; i++)
-						{
-							var _xx = 0
-							if(i % 2 != 0) _xx = 270;
-							var _yy = i * 110;
-							with(instance_create_layer(
-								camera._xx + _xx,
-								camera._yy - (20 + _yy),
-								"Obstacles_1",
-								oStalagmit
-							))
-							{
-								sprite_index = asset_get_index("sObstacleTestLevelHor" + string(irandom_range(1,3)));
-								if(i % 2 == 1) image_angle = 180;
+						enemies : 
+							{			
+								title : oBigBasicEnemy,
+								mass : 12,
+								top_speed : 0.5,
+								acceleration : 0.1,
+								_speed : 0,
+								ease_in : 0.05,
+								ancor : true,
+								absolute : true,
+								end_action : path_action_stop,
+								oob : "bottom",
 							}
-
-							var _path = path_duplicate(pWobbleSentry);
-							if(i % 2 == 0) _xx = 200;
-							else _xx = 20;
-							path_shift(_path, _xx, -(10 + _yy));
-							Spawner(
-								oSmallBasicEnemy, 
-								_path, 
-								1, 
-								1.5, 
-								0.2, 
-								1, 
-								0.05, 
-								false,
-								path_action_reverse);
-							
-						}
-					};
-					show_debug_message(_message);
-				},
-				quantity : 1,
-				interval : 0,
-				_message : "Stalagmits",
-				number_of_enemies : 3,
-				path_length : 900,
-				
-			},
-			//Stalagmit tonnel with hitnruns
-			{
-				wave : function()
-				{
-					if(!instance_exists(oCamera)) {return}
-					var camera = GetCamera(oCamera);
-					var center = instance_create_layer(
-						camera._xx + 100,
-						camera._yy - 20,
-						"Instances",
-						oSimpleSpawner
-					)
-					var enemies_amount = 10;
-					
-					with(center)
-					{
-						_enemies_amount = enemies_amount;
-						speed = -0.25; 
-						direction = 270;
-						spawn_sequence = new Sequence([
-							new Event(function()
+						,
+						amount : 1,
+						intervals : 0,
+						patterns : pStraight,
+						cyclic : false,
+						Generate : function(wave)
+						{
+							var spawner = SpawnerInit(wave, oCamera);
+							function Info (_enemy, __path) constructor
 							{
-								if(!instance_exists(oCamera)) {return}
-								var camera = GetCamera(oCamera);
-								var _x_gap = abs(100 - (other.y - camera._yy));
-								other.speed = max(-(0.25 + ((100 - _x_gap) * 0.0025)), -0.49);
-								with(instance_create_layer(
-									other.x - (220 + _x_gap),
-									camera._yy - 20,
-									"Obstacles_1",
-									oStalagmit
-								))
+								enemy = _enemy;
+								___path = path_duplicate(__path);
+								_event = function()
 								{
-									sprite_index = asset_get_index("sObstacleTestLevelHor" + string(irandom_range(1,3)));
+									EnemyInit(enemy, ___path);
 								}
-								with(instance_create_layer(
-									other.x + (220 + _x_gap),
-									camera._yy - 20,
-									"Obstacles_1",
-									oStalagmit
-								))
-								{
-									sprite_index = asset_get_index("sObstacleTestLevelHor" + string(irandom_range(1,3)));
-									image_angle = 180;
-								}
-								var chances = Chances([[10, 216 - camera._xx + other.x],[-10, camera._xx + other.x]]);
-								other.x += chances;
-								if(other.x > camera._xx + 150) other.x -= 40;
-								if(other.x < camera._xx + 50) other.x += 40;
-								
-								if(Chances([[0, 7],[1, 3]]) == 1)
-								{
-									if(_enemies_amount > 0)
-									{
-									var _path = path_duplicate(pWobbleSentry);
-									path_shift(_path, other.x - 50, -20);
-									Spawner(
-										oSmallBasicEnemy, 
-										_path, 
-										1, 
-										1.5, 
-										0.2, 
-										1, 
-										0.05, 
-										false,
-										path_action_reverse);
-										_enemies_amount--;
-									}
-								}
-							}, 
-							100, 80)
-						], true)
-					}
-				},
-				quantity : 1,
-				interval : 0,
-				_message : "Stalagmits tonnel",
-				number_of_enemies : 10,
-				path_length : 3500,
-			},
-			//Left horizontal hitnrun
-			{
-				wave : function()
-				{
-					if(!!instance_exists(oPlayerBox))
-					{
-						var _path = path_duplicate(pStraightHorizontal);
-						if(!!instance_exists(oCamera))
-						{
-							var camera = GetCamera(oCamera);
-							path_shift(_path, -15, oPlayerBox.y - camera._yy)
-							Spawner(
-								oMediumBasicEnemy, 
-								_path, 
-								3, 
-								1, 
-								0.2, 
-								1, 
-								0.05,
-								true,
-								path_action_stop);
-							
-						}
-					}
-					show_debug_message(_message);
-				},
-				quantity : 6,
-				interval : 120,
-				_message : "Left horizontal hitnrun",
-				number_of_enemies : 6,
-				path_length : 400,
-			},
-			// Right horizontal hitnrun
-			{
-				wave : function()
-				{
-					if(!!instance_exists(oPlayerBox))
-					{
-						var _path = path_duplicate(pStraightHorizontal);
-						path_mirror(_path);
-						if(!!instance_exists(oCamera))
-						{
-							var camera = GetCamera(oCamera);
-							path_shift(_path, -100, oPlayerBox.y - camera._yy);							
-							Spawner(
-								oMediumBasicEnemy, 
-								_path, 
-								3, 
-								1, 
-								0.2, 
-								1, 
-								0.05,
-								true,
-								path_action_stop);
-							
-						}
-					}
-					show_debug_message(_message);
-				},
-				quantity : 6,
-				interval : 120,
-				_message : "Right horizontal hitnrun",
-				number_of_enemies : 6,
-				path_length : 400,
-			},
-			// Random U-shape bigbois + 3 vertical spinners
-			{
-				wave : function()
-				{
-					var _path = path_duplicate(pBoomerang);		
-					var _x = irandom(1);
-					var counter = 0;
-					if(_x == 0) 
-					{
-						path_mirror(_path);
-					}
-					if(!!instance_exists(oCamera))
-					{
-						var camera = GetCamera(oCamera);
-						with(instance_create_layer(
-							camera._xx,
-							camera._yy,
-							"Instances",
-							oSimpleSpawner
-						))
-						{
-							speed = 0.5; 
-							direction = 270;
-							spawn_sequence = new Sequence([
-								new	Timer(120),
-								new Event(function()
-								{
-									var _path2 = path_duplicate(pStraight);
-									path_shift(_path2, 
-										50 + (irandom_range(0, 3) + 1) * 25,
-										0);
-									Spawner(
-										oSmallBasicEnemy, 
-										_path2, 
-										1, 
-										1.5, 
-										0.2, 
-										1, 
-										0.05,
-										true,
-										path_action_stop)
-									
-								}, 1, 0),
-							], true)
-						}
-					};
-		
-					Spawner(
-						oBigBasicEnemy, 
-						_path, 
-						12, 
-						0.5, 
-						0.2, 
-						1, 
-						0.05,
-						true,
-						path_action_stop,
-						"top");
-					
-					if(!!instance_exists(oCamera))
-					{
-						var camera = GetCamera(oCamera);
-						instance_create_layer(
-							camera._xx + 50 + (irandom_range(0, 3) + 1) * 25,
-							camera._yy + -5,
-							"Instances",
-							oDiamond
-						)
-					};
-					show_debug_message(_message);
-				},
-				quantity : 3,
-				interval : 180,
-				_message : "Random U-shape bigbois + 3 vertical spinners",
-				number_of_enemies : 6,
-				path_length : 1230,
-			},
-			// Hitnrun both sides + vertical spinners
-			{
-				wave : function()
-				{
-					//POSSIBLE WAY TO REFACTOR WAVES CODE
-					var _objects = [oSmallBasicEnemy, oMediumBasicEnemy, oMediumBasicEnemy]
-					var _mass = [1, 3, 3];
-					var _top_speed = [1.5, 1, 1];
-					var _delay = [120, 60, 120];
-					var amount_and_repeat = [[1,0],[4,180],[4,180]]
-					var _x_shift = [
-						{ coords : function(){return 50 + (irandom_range(0, 3) + 1) * 25}},
-						{ coords : function(){return 20}}, 
-						{ coords : function(){return 200}} 
-						]
-					var _path = pStraight;
-					
-					function NewWave(___path, __objects, __mass, __top_speed) constructor
-					{
-						p = ___path;
-						o = __objects;
-						m = __mass;
-						ts = __top_speed;
-						show_debug_message(path_get_x(p, 0));	
-						wave = function()
-						{
-						var _p = path_duplicate(p);
-						Spawner(
-							o, 
-							_p, 
-							m, 
-							ts, 
-							0.2, 
-							1, 
-							0.05,
-							true,
-							path_action_stop)
-						}
+							};
 
-					};
-					
-					if(!!instance_exists(oCamera))
-					{
-						var camera = GetCamera(oCamera);
-						for(var i = 0; i < 3; i++)
-						{
-							var __path = path_duplicate(_path);
-							path_shift(__path, _x_shift[i].coords(), 0);
-							
-							var nw = new NewWave(
-								__path, 
-								_objects[i], 
-								_mass[i], 
-								_top_speed[i]);
+							var info = new Info (wave.enemies, wave.patterns);				
+							path_shift(info.___path, 121, -20);
+							array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
 
-							with(instance_create_layer(
-								camera._xx,
-								camera._yy,
-								"Instances",
-								oSimpleSpawner
-							))
+						}
+					},
+					{
+						Unpack : function(){Spawner(self);},
+						enemies : 
+							{			
+								title : oSmallBasicEnemy,
+								mass : 1,
+								top_speed : 0.5,
+								acceleration : 0.5,
+								_speed : 0,
+								ease_in : 0.05,
+								ancor : true,
+								absolute : true,
+								end_action : path_action_stop,
+								oob : "bottom",
+							}
+						,
+						amount : 3,
+						intervals : 20,
+						patterns : pStraight,
+						cyclic : false,
+						Generate : function(wave)
+						{
+							var spawner = SpawnerInit(wave, oCamera);
+							function Info (_enemy, __path) constructor
 							{
-								speed = -0.25; 
-								direction = 270;
-								spawn_sequence = new Sequence([
-									new Timer(_delay[i]),
-									new Event(nw.wave, 
-									amount_and_repeat[i][0], 
-									amount_and_repeat[i][1])
-								], true)
+								enemy = _enemy;
+								___path = path_duplicate(__path);
+								_event = function()
+								{
+									EnemyInit(enemy, ___path);
+								}
+							};
+							for(var o = 0; o < wave.amount; o++)
+							{
+								var info = new Info (wave.enemies, wave.patterns);				
+								path_shift(info.___path, 111 - (o * 20), -20);
+								if(path_get_point_x(info.___path, 0) < 100) path_mirror(info.___path);
+								array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+								array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
 							}
 						}
-					}
-
-					show_debug_message(_message);
-				},
-				quantity : 1,
-				interval : 0,
-				_message : "Hitnrun both sides + vertical spinners",
-				number_of_enemies : 15,
-				path_length : 880,
+					},
+					{
+						Unpack : function(){Spawner(self);},
+						enemies : 
+							{			
+								title : oSmallBasicEnemy,
+								mass : 1,
+								top_speed : 0.5,
+								acceleration : 0.5,
+								_speed : 0,
+								ease_in : 0.05,
+								ancor : true,
+								absolute : true,
+								end_action : path_action_stop,
+								oob : "bottom",
+							}
+						,
+						amount : 3,
+						intervals : 20,
+						patterns : pStraight,
+						cyclic : false,
+						Generate : function(wave)
+						{
+							var spawner = SpawnerInit(wave, oCamera);
+							function Info (_enemy, __path) constructor
+							{
+								enemy = _enemy;
+								___path = path_duplicate(__path);
+								_event = function()
+								{
+									EnemyInit(enemy, ___path);
+								}
+							};
+							for(var o = 0; o < wave.amount; o++)
+							{
+								info = new Info (wave.enemies, wave.patterns);				
+								path_shift(info.___path, 131 + (o * 20), -20);
+								if(path_get_point_x(info.___path, 0) < 100) path_mirror(info.___path);
+								array_push(spawner.spawn_sequence._s, new Event(info._event ,1,0));
+								array_push(spawner.spawn_sequence._s, new Timer(wave.intervals));
+							}
+						}
+					},
+				],
+				wave_length : 600,
+				wave_count : 7,
+				_delete_chance : Chances([[2,0],[8,1]]),
+				_message : "Arrow formation bigbois and smallies",			
 			},
 		]
 	]

@@ -2,6 +2,7 @@ hp = 10;
 _type = "metal";
 _alignment = "enemy";
 _incorporeal = false;
+_land = false;
 _patterns =
 [
 [[185, 70], [160, 95], [135, 70], [160, 45]],

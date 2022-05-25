@@ -14,7 +14,7 @@
     "path": "folders/Paths.yy",
   },
   "resourceVersion": "1.0",
-  "name": "pSShape",
+  "name": "pSTurn",
   "tags": [],
   "resourceType": "GMPath",
 }

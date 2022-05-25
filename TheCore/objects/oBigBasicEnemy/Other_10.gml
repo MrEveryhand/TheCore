@@ -3,13 +3,14 @@ max_hp = hp;
 _type = "flesh";
 _alignment = "enemy";
 _incorporeal = false;
+_land = false;
 _pattern_counter = 0;
 _current_pattern = [];
 _ease_in = 0;
 image_speed = 0.75;
 
 shoot_sequence = new Sequence([
-	new Timer(irandom_range(120, 180)),
+	new Timer(irandom_range(100, 140)),
 	new Event(function()
 	{
 		if(!!instance_exists(oPlayerBox))

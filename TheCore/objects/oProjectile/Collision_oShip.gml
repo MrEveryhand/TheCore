@@ -9,7 +9,9 @@
 			oSpawnerTestLevelTrue.enemies_touched++
 		}
 
-	if(collide_object._incorporeal == false && _harm == true)
+	if(collide_object._incorporeal == false && 
+		_harm == true && 
+		collide_object._state != "destroyed")
 	{
 		OnHit(onHit, self);
 		if(_explosion != noone)

@@ -24,6 +24,7 @@ _incorporeal = false;
 _path = noone;
 flash = 0;
 oob_direction = "bottom";
+_state = "move";
 ancor = noone;
 spawner = false;
 touched = false;

@@ -1,4 +1,4 @@
-time = 4800;
+time = 2400;
 types = ["aliens"];
 suspicions = 0;
 menace = 0;

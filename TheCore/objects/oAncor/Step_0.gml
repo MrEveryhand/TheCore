@@ -1,6 +1,6 @@
 if(!instance_exists(follower))
 {
-	if(!!path_exists(_path))
-		path_delete(_path);
+	if(!!path_exists(path))
+		path_delete(path);
 	instance_destroy(self);
 }

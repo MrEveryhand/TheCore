@@ -12,7 +12,7 @@ if(global.game_state.state == "level")
 				camera.top_border - 3000, 
 				camera.bottom_border + 20, self)) 
 				{
-					if(!!spawner)
+					if(!!spawner && _state != "destroyed")
 					{
 						oSpawnerTestLevelTrue.enemies_passed++
 						oSpawnerTestLevelTrue.wave_is_on--;
@@ -24,7 +24,7 @@ if(global.game_state.state == "level")
 		{
 			if(!!OOB(-40, 380, -3000, 240, self)) 
 			{
-				if(!!instance_exist(oSpawnerTestLevelTrue))
+				if(!!instance_exist(oSpawnerTestLevelTrue) != "destroyed")
 					{
 						oSpawnerTestLevelTrue.enemies_passed++;
 						oSpawnerTestLevelTrue.wave_is_on--;
@@ -44,7 +44,7 @@ if(global.game_state.state == "level")
 				camera.top_border - 40, 
 				camera.bottom_border + 3000, self)) 
 				{
-					if(!!spawner)
+					if(!!spawner != "destroyed")
 					{
 						oSpawnerTestLevelTrue.enemies_passed++
 						oSpawnerTestLevelTrue.wave_is_on--;
@@ -56,7 +56,7 @@ if(global.game_state.state == "level")
 		{
 			if(!!OOB(-40, 380, -40, 3000, self)) 
 			{
-				if(!!instance_exist(oSpawnerTestLevelTrue))
+				if(!!instance_exist(oSpawnerTestLevelTrue) != "destroyed")
 					{
 						oSpawnerTestLevelTrue.enemies_passed++;
 						oSpawnerTestLevelTrue.wave_is_on--;
@@ -75,8 +75,12 @@ if(!!instance_exists(ancor))
 		_destination[1] = ancor.y + camera._yy;
 }
 
-Movement_and_physics(self);
-if(hp <= 0)
+if(_state == "move")
+{
+	Movement_and_physics(self);
+}
+
+if(hp <= 0 && _state != "destroyed")
 {
 	if(!!spawner)
 	{

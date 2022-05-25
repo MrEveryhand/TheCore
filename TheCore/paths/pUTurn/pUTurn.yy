@@ -14,7 +14,7 @@
     "path": "folders/Paths.yy",
   },
   "resourceVersion": "1.0",
-  "name": "pBoomerang",
+  "name": "pUTurn",
   "tags": [],
   "resourceType": "GMPath",
 }

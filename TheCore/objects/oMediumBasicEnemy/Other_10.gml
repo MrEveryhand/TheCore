@@ -3,6 +3,7 @@ max_hp = hp;
 _type = "flesh";
 _alignment = "enemy";
 _incorporeal = false;
+_land = false;
 _pattern_counter = -1;
 _ease_in = 0;
 image_speed = 0;
@@ -16,13 +17,13 @@ shoot_sequence = new Sequence([
 			_yy = camera._yy;
 		}
 
-		if(_direction < 120 && _direction > 60 && y < 40 + _yy)
+		if(_direction < 120 && _direction > 60 && y < 40 + _yy && oob_direction == "top")
 		{
 			_fire = 0;
 			return true
 		}
 			
-		if(_direction > 210 && _direction < 330 && y > 110 + _yy)
+		if(_direction > 210 && _direction < 330 && y > 110 + _yy && oob_direction == "bottom")
 		{
 			_fire = 1;
 			return true
